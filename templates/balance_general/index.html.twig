@@ -1,0 +1,72 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BalanceGeneralController!{% endblock %}
+
+{% block body %}
+    {{ ing }}
+    <div class="container" style="padding-top: 3%;">
+        <h5 style="text-align: center">"CIELO AZUL" S.A DE C.V.</h5>
+        <h5 style="text-align: center">BALANCE GENERAL AL {{ "now"|date("m/d/Y") }}</h5>
+        <h5 style="text-align: center">(Expresado en dólares de los Estados Unidos de América)</h5>
+        <br>
+        <h5>ACTIVO</h5>
+        <table class="table">
+            {% set sumaDebe = 0 %}
+            {% set sumaHaber = 0 %}
+            {% for nombre in nombres %}
+                {% set counter = ( counter | default(-1) ) + 1 %}
+                {% if (saldos[counter][0].resta != 0) and (saldos[counter][0].resta > 0) and (nombre !="CAPITAL") %}
+                    <tr>
+
+                    <td>{{ nombre }}</td>
+
+
+                        <td>${{  saldos[counter][0].resta }}</td>
+                        {% set sumaDebe = saldos[counter][0].resta + sumaDebe %}
+                        <td></td>
+
+                {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        <h5>PASIVO</h5>
+
+        <table class="table">
+            {% set sumaDebe = 0 %}
+            {% set sumaHaber = 0 %}
+            {% for nombre in nombres %}
+                {% set counter = ( counter | default(-1) ) + 1 %}
+                {% if (saldos[counter][0].resta != 0) and (saldos[counter][0].resta < 0) %}
+                    <tr>
+
+                    <td>{{ nombre }}</td>
+
+                        <td></td>
+                        <td>${{  (-1)*saldos[counter][0].resta }}</td>
+
+                {% endif %}
+                </tr>
+            {% endfor %}
+        </table>
+        <h5>CAPITAL</h5>
+        <table class="table">
+            {% set sumaDebe = 0 %}
+            {% set sumaHaber = 0 %}
+            {% for nombre in nombres %}
+                {% set counter = ( counter | default(-1) ) + 1 %}
+                {% if (nombre=="CAPITAL") %}
+                    <tr>
+
+                    <td>{{ nombre }}</td>
+
+                    <td></td>
+                    <td>${{  saldos[counter][0].resta }}</td>
+                    </tr>
+                {% endif %}
+
+            {% endfor %}
+        </table>
+
+        <button id="botonImprimir" class="btn btn-dark" onclick="window.print()">Imprimir</button>
+    </div>
+{% endblock %}

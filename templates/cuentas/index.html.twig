@@ -1,0 +1,39 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello CuentasController!{% endblock %}
+{% block stylesheets %}
+<link rel="stylesheet" href="/css/cuentas.css">
+{% endblock %}
+
+{% block body %}
+<div onload="getId()" class="text-center my-5 ">
+  <a id="btnAgregar" type="button" class="btn btn-primary">Agregar Cuenta</a>
+  <a id="btnGuardar" type="button" style='visibility:hidden;' class="btn btn-success" disabled>Guardar</a>
+</div>
+<div class="container mt-5">
+<h3 id="partidaTitle"  data-partidaid="{{partidaId}}">Estas son las cuentas agregadas en la partida  </h3>
+<hr>
+<table id='tablacuentas' class="table">
+  <thead>
+    <tr>
+      <th class="text-center" scope="col">#</th>
+      <th class="text-center" scope="col">CUENTA</th>      
+      <th class="text-center" scope="col">Debe</th>
+      <th class="text-center" scope="col">Haber</th>
+      <th class="text-center" colspan='3' class="text-center" scope="col">Action</th>
+    </tr>
+  </thead>
+  <tbody>
+   
+   
+  </tbody>
+</table>
+</div>
+
+
+{% endblock %}
+{% block javascripts %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+<script onload="traer_catalogo()" src="/js/cuentas.js"></script>
+{% endblock %}

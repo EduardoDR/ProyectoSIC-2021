@@ -1,0 +1,9 @@
+/*input:enabled{
+    border:2.5px;
+    border-style: solid;
+    border-color: black;
+}
+input:disabled{
+    border-style: solid;
+    border-color: brown;
+}*/

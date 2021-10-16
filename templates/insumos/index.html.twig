@@ -1,0 +1,101 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello InsumosController!{% endblock %}
+
+{% block body %}
+<div class="container">
+  <h2>Bordered Table</h2>
+  <p>The .table-bordered class adds borders to a table:</p>   
+  <a  onclick="agregarFilaMP('tb1')" class="btn btn-primary" disabled>Agregar</a>         
+  <table id="tb1" class="table table-bordered">
+    <thead>
+    <tr>
+   		<th class="text-center" colspan="5">Materia Prima</th>       
+   </tr>
+      <tr>
+        <th>Fecha</th>
+        <th>Tipo y Costo Unitario</th>       
+        <th>Cantidad</th>
+         <th>Costo</th>    
+         <th>actiones</th>   
+      </tr>
+    </thead>
+    <tbody>
+     <!-- <tr>
+        <td><input type="date"></td>
+        <td><select> <option>Primero articulo de venta al mayor</option></select></td>
+       
+        <td>10</td>
+        <td>300</td>       
+      </tr>
+       -->
+     
+    </tbody>
+    <tbody>
+    <tr>
+    	<td colspan="3">Total Materiales</td>
+        <td colspan="2">0</td>        
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+  <a onclick="agregarFilaMO('tb2')" class="btn btn-primary">Agregar</a>
+  <table   id="tb2" class="table table-bordered">
+     <thead>
+    <tr>   		
+        <th class="text-center" colspan="6" >Mano de obra</th>
+    </tr>
+        <th>Fecha</th>
+        <th>Descripcion</th>
+        <th>Horas</th>
+        <th>Coste por hora</th>
+         <th>Costo</th>
+         <th>Acciones</th>
+       
+      </tr>
+    </thead>
+    <tbody>
+     
+    </tbody>
+    <tbody>
+    <tr>
+      	<td colspan="4">Total Mano de Obra</td>
+        <td colspan="2">0</td>
+        
+      </tr>
+    </tbody>
+  </table>
+  <hr>
+<a  onclick="agregarFilaCI('tb3')" class="btn btn-primary">Agregar</a>
+<table id="tb3" class="table table-bordered">
+    <thead>
+        <tr>  		
+            <th class="text-center" colspan="5" >Costos indirectos</th>
+        </tr>
+        <tr>       
+            <th>Fecha</th>
+            <th>Tasa</th>
+            <th>Val. Real</th>
+            <th>Costo Aplicado</th> 
+            <th>Acciones</th>       
+        </tr>
+    </thead>
+    <tbody>
+              
+    </tbody>
+    <tbody>
+    <tr>    	
+        <td colspan="3">Total Costos Indirectos</td>
+        <td colspan="2">0</td>
+      </tr>
+    </tbody>
+</table>
+  
+</div>
+
+{% endblock %}
+{% block javascripts %}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', { callback: 'fos.Router.setData' }) }}"></script>
+<script onload="traer_insumos()" src="/js/costos.js"></script>
+{% endblock %}

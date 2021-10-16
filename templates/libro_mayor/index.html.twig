@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello LibroMayorController!{% endblock %}
+
+{% block body %}
+    <div class="container" style="padding-top: 3%; padding-bottom: 3%;">
+        <h5 style="text-align: center">EMPRESA "CIELO AZUL" S.A DE C.V.</h5>
+        <h5 style="text-align: center">LIBRO MAYOR</h5>
+        <h5 style="text-align: center">AL {{ "now"|date("m/d/Y") }}</h5>
+
+        {% for cuenta in cuentas %}
+            {% set counter = ( counter | default(-1) ) + 1 %}
+            <h4> {{  nombres[counter] }}</h4>
+            <table class="table" style="width:100%">
+                <tr>
+                    <th>Fecha</th>
+                    <th>Concepto</th>
+                    <th>Debe</th>
+                    <th>Haber</th>
+                </tr>
+                {% for valor in cuenta %}
+                <tr>
+                    <td>{{ valor.fecha }}</td>
+                    <td>{{ valor.concepto }}</td>
+                    {% if valor.debe > 0 %}
+                    <td>${{ valor.debe }}</td>
+                        {% else %}
+                        <td></td>
+                    {% endif %}
+                    {% if valor.haber > 0 %}
+                        <td>${{ valor.haber }}</td>
+                    {% else %}
+                        <td></td>
+                    {% endif %}
+                </tr>
+                {% endfor %}
+
+                <tr>
+                    <td></td>
+                    <td>Saldo Final</td>
+                    {% if saldos[counter][0].resta > 0 %}
+                        <td>${{  saldos[counter][0].resta }}</td>
+                        <td></td>
+                    {% else %}
+                        <td></td>
+                        <td>${{  (-1)*saldos[counter][0].resta }}</td>
+                    {% endif %}
+                </tr>
+
+            </table>
+        {% endfor %}
+        <button id="botonImprimir" class="btn btn-dark " onclick="window.print()">Imprimir</button>
+    </div>
+{% endblock %}

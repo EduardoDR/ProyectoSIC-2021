@@ -1,0 +1,50 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BalanceComprobacionController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+    <div class="container" style="padding-top: 3%;">
+        <h5 style="text-align: center">EMPRESA "CIELO AZUL" S.A DE C.V.</h5>
+        <h5 style="text-align: center">BALANZA DE COMPROBACION</h5>
+        <h5 style="text-align: center">AL {{ "now"|date("m/d/Y") }}</h5>
+        <br>
+        <table class="table">
+            <tr>
+                <th>FM</th>
+                <th>CUENTAS</th>
+                <th>SALDO DEUDOR</th>
+                <th>SALDO ACREEDOR</th>
+            </tr>
+            {% set sumaDebe = 0 %}
+            {% set sumaHaber = 0 %}
+            {% for nombre in nombres %}
+                {% set counter = ( counter | default(-1) ) + 1 %}
+            <tr>
+                <td>{{ counter + 1 }}</td>
+                <td>{{ nombre }}</td>
+                {% if saldos[counter][0].resta > 0 %}
+
+                <td>${{  saldos[counter][0].resta }}</td>
+                    {% set sumaDebe = saldos[counter][0].resta + sumaDebe %}
+                    <td></td>
+                    {% else %}
+                        <td></td>
+                        <td>${{  (-1)*saldos[counter][0].resta }}</td>
+                        {% set sumaHaber = saldos[counter][0].resta + sumaHaber %}
+                {% endif %}
+            </tr>
+            {% endfor %}
+            <tr>
+                <td colspan="2">TOTALES</td>
+                <td>${{ sumaDebe }}</td>
+                <td>${{ (-1)*sumaHaber }}</td>
+            </tr>
+        </table>
+        <button id="botonImprimir" class="btn btn-dark" onclick="window.print()">Imprimir</button>
+    </div>
+{% endblock %}

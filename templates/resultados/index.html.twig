@@ -1,0 +1,105 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello ResultadosController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<div class="example-wrapper">
+    <h5 style="text-align: center">"CIELO AZUL" S.A DE C.V.</h5>
+    <h5 style="text-align: center">ESTADO DE RESULTADOS AL {{ "now"|date("m/d/Y") }}</h5>
+    <h5 style="text-align: center">(Expresado en dólares de los Estados Unidos de América)</h5>
+    <br>
+    <table class="table">
+        <tr>
+            <td></td>
+            <td>Ingresos de Operacion</td>
+            <td></td>
+            <td></td>
+            <td>${{ (-1)*(ingresosPorServicios+ventaDeAccesorios+ventaDeSoftware) }}</td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>Ingresos por servicios</td>
+            <td></td>
+            <td>${{ (-1)*ingresosPorServicios }}</td>
+            <td></td>
+        </tr><tr>
+            <td></td>
+            <td>Ventas de accesorios y consumibles</td>
+            <td></td>
+            <td>${{ ventaDeAccesorios }}</td>
+            <td></td>
+        </tr><tr>
+            <td></td>
+            <td>Ventas de Software</td>
+            <td></td>
+            <td>${{ (-1)*ventaDeSoftware }}</td>
+            <td></td>
+        </tr><tr>
+            <td>(-)</td>
+            <td>Costo de Venta y servicios</td>
+            <td></td>
+            <td></td>
+            <td>${{ (-1)*(costoPorServicios- (inventario + comprasAccesorios + comprasSoftware)) }}</td>
+        </tr><tr>
+            <td></td>
+            <td>Costos por servicios</td>
+            <td></td>
+            <td>${{ costoPorServicios }}</td>
+            <td></td>
+        </tr><tr>
+            <td></td>
+            <td>Inventario</td>
+            <td>${{ inventario }}</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>(+)</td>
+            <td>Compras de accesorios y consumibles</td>
+            <td>${{ comprasAccesorios }}</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>(+)</td>
+            <td>Compras de software</td>
+            <td>${{ comprasSoftware }}</td>
+            <td></td>
+            <td></td>
+        </tr><tr>
+            <td>(=)</td>
+            <td>Mercadería dispoinible para la venta</td>
+            <td></td>
+            <td>{{ (inventario + comprasAccesorios + comprasSoftware) }}</td>
+            <td></td>
+        </tr><tr>
+            <td>(=)</td>
+            <td>Costo de ventas</td>
+            <td></td>
+            <td>{{ (inventario + comprasAccesorios + comprasSoftware) }}</td>
+            <td></td>
+        </tr><tr>
+            <td>(=)</td>
+            <td>Utilidad antes Impuesto sobre la Renta</td>
+            <td></td>
+            <td></td>
+            <td>${{ (-1)*(ingresosPorServicios+ventaDeAccesorios+ventaDeSoftware)-(-1)*(costoPorServicios- (inventario + comprasAccesorios + comprasSoftware)) }}</td>
+        </tr><tr>
+            <td>(-)</td>
+            <td>Gastos por impuestos</td>
+            <td></td>
+            <td></td>
+            <td>{{ iva }}</td>
+        </tr><tr>
+            <td>(=)</td>
+            <td>Ganancia del Año</td>
+            <td></td>
+            <td></td>
+            <td>${{ ((-1)*(ingresosPorServicios+ventaDeAccesorios+ventaDeSoftware)-(-1)*(costoPorServicios- (inventario + comprasAccesorios + comprasSoftware)))-iva }}</td>
+        </tr>
+    </table>
+</div>
+{% endblock %}
