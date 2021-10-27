@@ -26,6 +26,7 @@ btnGuardar.addEventListener('click', function(){
     
 });
 function agregarFila(){
+
     if(!flag) {alert("No puedes agregar otra cuenta si no has aceptado la anterior"); return 0;}
     flag = false;
     num++;
@@ -43,7 +44,6 @@ function agregarFila(){
     numeroYNombreDeCuenta.innerHTML = inputsInnerHTML;
     debe.innerHTML='$<input  class="form-control"  type="text" value="0">';
     haber.innerHTML='$<input  class="form-control"  type="text" value="0">';
-    
 }
 function aceptarCuenta(event){
     flag = true;

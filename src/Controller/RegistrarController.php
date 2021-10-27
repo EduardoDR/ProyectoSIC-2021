@@ -29,7 +29,6 @@ class RegistrarController extends AbstractController
             $url = "cuentas/" . $id; //redirige a cuentas/ para agregar sus cuentas parciales
             return $this->redirect($url);
         }
-
         return $this->render('registrar/index.html.twig', [
             'controller_name' => 'RegistrarController',
             'form' => $form->createView(),
