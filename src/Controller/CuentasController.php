@@ -47,7 +47,7 @@ class CuentasController extends AbstractController
                 $haber = strval( $cuentaA["haber"]);
                 $numeroDeCuenta = strval( $cuentaA["numeroDeCuenta"]);               
 
-                if($numeroDeCuenta == "4A2"){
+                if($numeroDeCuenta == "4A2" || $numeroDeCuenta == "4A3" || $numeroDeCuenta =="4C4"){
                     $debeIVA=0;
                     $haberIVA=0;
                     $debeSinIVA=0;
@@ -64,22 +64,25 @@ class CuentasController extends AbstractController
 
                     $sql = $sql . "( $partidaId , '$numeroDeCuenta', '$nombre', $debeSinIVA, $haberSinIVA),";
                     $sql = $sql . "( $partidaId ,  '$numeroDeCuentaIVA' , '$nombreIVA' , $debeIVA , $haberIVA)";
-                }else
+                }elseif($numeroDeCuenta == "5A1" || $numeroDeCuenta == "5A2" || $numeroDeCuenta == "5A3"){
+                    $debeIVA=0;
+                    $haberIVA=0;
+                    $debeSinIVA=0;
+                    $haberSinIVA=0;
 
-                if($numeroDeCuenta == "4A3"){
+                    $debeSinIVA = $debe * 0.87;
+                    $haberSinIVA = $haber * 0.87;
 
-                }
+                    $debeIVA= $debe * 0.13;
+                    $haberIVA= $haber * 0.13;
 
-                if($numeroDeCuenta == "5A1"){
+                    $numeroDeCuentaIVA = "2A7";
+                    $nombreIVA = "IVA DEBITO FISCAL";
 
-                }
-
-                if($numeroDeCuenta == "5A2"){
-
-                }
-
-                if($numeroDeCuenta == "5A3"){
-
+                    $sql = $sql . "( $partidaId , '$numeroDeCuenta', '$nombre', $debeSinIVA, $haberSinIVA),";
+                    $sql = $sql . "( $partidaId ,  '$numeroDeCuentaIVA' , '$nombreIVA' , $debeIVA , $haberIVA)";
+                }else{
+                    $sql = $sql . "( $partidaId ,  '$numeroDeCuenta' , '$nombre' , $debe , $haber)";
                 }
 
 
