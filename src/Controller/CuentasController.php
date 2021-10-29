@@ -45,15 +45,54 @@ class CuentasController extends AbstractController
                 $nombre = strval( $cuentaA["nombre"]);
                 $debe = strval( $cuentaA["debe"]);
                 $haber = strval( $cuentaA["haber"]);
-                $numeroDeCuenta = strval( $cuentaA["numeroDeCuenta"]);
-                
-                $sql = $sql . "( $partidaId ,  '$numeroDeCuenta' , '$nombre' , $debe , $haber)";
+                $numeroDeCuenta = strval( $cuentaA["numeroDeCuenta"]);               
+
+                if($numeroDeCuenta == "4A2" || $numeroDeCuenta == "4A3" || $numeroDeCuenta =="4C4"){
+                    $debeIVA=0;
+                    $haberIVA=0;
+                    $debeSinIVA=0;
+                    $haberSinIVA=0;
+
+                    $debeSinIVA = $debe * 0.87;
+                    $haberSinIVA = $haber * 0.87;
+
+                    $debeIVA= $debe * 0.13;
+                    $haberIVA= $haber * 0.13;
+
+                    $numeroDeCuentaIVA = "1A9";
+                    $nombreIVA = "IVA CREDITO FISCAL";
+
+                    $sql = $sql . "( $partidaId , '$numeroDeCuenta', '$nombre', $debeSinIVA, $haberSinIVA),";
+                    $sql = $sql . "( $partidaId ,  '$numeroDeCuentaIVA' , '$nombreIVA' , $debeIVA , $haberIVA)";
+                }elseif($numeroDeCuenta == "5A1" || $numeroDeCuenta == "5A2" || $numeroDeCuenta == "5A3"){
+                    $debeIVA=0;
+                    $haberIVA=0;
+                    $debeSinIVA=0;
+                    $haberSinIVA=0;
+
+                    $debeSinIVA = $debe * 0.87;
+                    $haberSinIVA = $haber * 0.87;
+
+                    $debeIVA= $debe * 0.13;
+                    $haberIVA= $haber * 0.13;
+
+                    $numeroDeCuentaIVA = "2A7";
+                    $nombreIVA = "IVA DEBITO FISCAL";
+
+                    $sql = $sql . "( $partidaId , '$numeroDeCuenta', '$nombre', $debeSinIVA, $haberSinIVA),";
+                    $sql = $sql . "( $partidaId ,  '$numeroDeCuentaIVA' , '$nombreIVA' , $debeIVA , $haberIVA)";
+                }else{
+                    $sql = $sql . "( $partidaId ,  '$numeroDeCuenta' , '$nombre' , $debe , $haber)";
+                }
+
+
+                //$sql = $sql . "( $partidaId ,  '$numeroDeCuenta' , '$nombre' , $debe , $haber)";
                 if($i != count($cuentas)-1){
                     
                     $sql = $sql . ",";
                 }
-                
             }
+            
             $logger->info($sql);
            $stmt = $conn->getConnection()->prepare($sql);
            $stmt->execute();
