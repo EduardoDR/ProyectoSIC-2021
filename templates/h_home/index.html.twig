@@ -1,17 +1,53 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}HHome{% endblock %}
+{% block title %}TecnoInfo{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="/css/cuentas.css">
+{% endblock %}
+
 
 {% block body %}
 
-<h5 style="text-align: center">BIENVENIDO</h5>
+<style>
+    .example-wrapper { margin: 1em auto; max-width: 800px; width: 95%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5; padding: 2px 6px; }
+</style>
+
+<h2>BIENVENIDO</h2>
 <h5 style="text-align: center">Aplicación de Contabilidad General y de Costos</h5>
-<div class="text-center">
-<img src="/logoDataGrid.jpg" class="rounded" alt="logoDataGrid">
+
+<div id="left"> 
+    <img src="/logoDataGrid.jpg" class="rounded" alt="logoDataGrid">
 </div>
-<p class="text-center">"Todas tus necesidades de web empresarial, aplicaciones y sistemas informáticos, en una sola consultora"</p>
+    
+
+<div id="right">
+    <h3>Eslogan:</h3>
+    <p class="text-center" id="logoLema"><em>"Todas tus necesidades de web empresarial, aplicaciones y sistemas informáticos, en una sola consultora"</em></p>
+    <h3>Misión:</h3>
+    <p>Data Grid ofrece a nuestros clientes consulta y asesoramiento profesional sobre sistemas informáticos y las distintas herramientas digitales necesarias para brindar apoyo a las empresas para mejorar su rendimiento  y ayudarlas a posicionarlas en el mercado actual. </p>
 </div>
 
-<p class="text-center">Data Grid ofrece a nuestros clientes consulta y asesoramiento profesional sobre sistemas informáticos y las distintas herramientas digitales necesarias para brindar apoyo a las empresas para mejorar su rendimiento  y ayudarlas a posicionarlas en el mercado actual. </p>
+<div id="navegacion">
+    <h3>Nevegación en el sitio:</h3>
+    <ol>
+        <li>Contabilidad General</li>
+            <ul>
+                <li>Mayorización.</li>
+                <li>Balance de Comprobacion.</li>
+                <li>Ajustes.</li>
+                <li>Balance General.</li>
+                <li>Estado de Capital.</li>
+                <li>Estado de Resultado.</li>
+            </ul>
+        <li>Contabilidad de Costos</li>
+        <ul>
+                <li>Costeo por orden de fabricación.</li>
+        </ul>
+    </ol>
+
+</div>
+
 
 {% endblock %}

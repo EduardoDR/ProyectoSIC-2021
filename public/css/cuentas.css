@@ -8,6 +8,66 @@ input:disabled{
     border-color: brown;
 }*/
 
-#sticky-footer{
-    background-color: aqua;
+h2{
+    color: #800000;
+    text-align: center;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 60px;
+    font-weight: 900;
+}
+
+h5{
+    font-size: 30px;
+    font-weight: 700;
+}
+
+img{
+    top:50%;
+    left: 50%;
+    position: relative;
+    transform: translate(-50%, -50%);
+
+}
+
+p{
+    margin-top: 10px;
+}
+
+#left{
+    float:left; 
+    padding:10px; 
+    color:black; 
+    width: 50%; 
+    height: 350px;
+    margin:19px 40px;
+    background:#20B2AA ;
+}
+
+#right{
+    float:right; 
+    text-align: center; 
+    padding:10px; 
+    color:#FFE4C4; 
+    width: 35%;
+    height: 350px; 
+    margin:19px 40px;
+    background:#039;
+}
+
+ol{
+    position: fixed;
+    align-items: center;
+}
+
+#navegacion{
+    position:relative;
+    float:left;
+    line-height: 22px; 
+    padding:10px; 
+    color:black; 
+    width: 500px; 
+    height: 275px;
+    margin:10px 50%;
+    background:#DEB887 ;
+    transform: translate(-50%, 0);
 }
