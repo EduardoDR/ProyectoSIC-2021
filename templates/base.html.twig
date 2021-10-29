@@ -3,7 +3,7 @@
     <head>
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="sim3.png">
-        <title>{% block title %}Welcome!{% endblock %}</title>
+        <title>{% block title %}Bienvenido!{% endblock %}</title>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <link rel="stylesheet" href="css/cuentas.css">
         {% block stylesheets %}
@@ -23,16 +23,21 @@
         
     </head>
     <body>
+<<<<<<< HEAD
         <nav class="navbar navbar-light" style="background-color:  #7cf27d;">
             <a class="navbar-brand" href="/h/home">TecnoInfo</a>
+=======
+        <nav class="navbar navbar-light" style="background-color: #7cf27d">
+            <a class="navbar-brand" href="/h/home">TechCount</a>
+>>>>>>> 3dff8b3da557f1bff6f2c34ab29f188dee5b33a5
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
             <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
                 <div class="navbar-nav">
                     <a class="nav-item nav-link" href="{{ path('registrar') }}">Registrar partidas</a>
-                    <a class="nav-item nav-link" href="{{ path('libro_mayor') }}">Mayorizacion</a>
-                    <a class="nav-item nav-link" href="{{ path('balance_comprobacion') }}">Balance de comprobacion</a>
+                    <a class="nav-item nav-link" href="{{ path('libro_mayor') }}">Mayorización</a>
+                    <a class="nav-item nav-link" href="{{ path('balance_comprobacion') }}">Balance de comprobación</a>
                     <a class="nav-item nav-link" href="{{ path('ajustes') }}">Ajustes</a>
                     <a class="nav-item nav-link" href="{{ path('balance_general') }}">Balance General</a>
                     <a class="nav-item nav-link" href="{{ path('capital') }}">Estado de Capital</a>
@@ -43,9 +48,9 @@
         </nav>
         {% block body %}{% endblock %}     
         <br>
-        <footer id="sticky-footer" class="py-4 bg-dark mt-auto text-white-50">
+        <footer id="sticky-footer" class="py-4 mt-auto text-dark-50" style="background-color: #7cf27d">
             <div class="container text-center">
-            <small>Copyright &copy; Sistemas Contables 2020</small>
+            <small>Sistemas Contables - 2021</small>
             </div>
         </footer>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
