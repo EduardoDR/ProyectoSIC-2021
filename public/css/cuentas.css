@@ -7,3 +7,7 @@ input:disabled{
     border-style: solid;
     border-color: brown;
 }*/
+
+#sticky-footer{
+    background-color: aqua;
+}
