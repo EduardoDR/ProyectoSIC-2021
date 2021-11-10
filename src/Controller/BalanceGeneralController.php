@@ -24,21 +24,14 @@ class BalanceGeneralController extends AbstractController
         $id = self::obtenerID();
         $creditoFiscal = self::obtenerSaldoCuenta("IVA CREDITO FISCAL");
         self::ejecutarQuery("INSERT INTO public.ajustespartidas(id, fecha, concepto) VALUES ($id+1,'09-01-2020', 'Por consolidacion de iva');");
-        self::ejecutarQuery("INSERT INTO public.ajustes(
-	partidas_id, numero, nombre, debe, haber)
+        self::ejecutarQuery("INSERT INTO public.ajustes(partidas_id, numero, nombre, debe, haber)
 	VALUES ($id+1, '1A9', 'IVA CREDITO FISCAL', 0, $creditoFiscal);");
-        self::ejecutarQuery("INSERT INTO public.ajustes(
-        partidas_id, numero, nombre, debe, haber)
-	VALUES ($id+1, '2A7', 'IVA DÉBITO FISCAL', $creditoFiscal, 0);");
+        self::ejecutarQuery("INSERT INTO public.ajustes(partidas_id, numero, nombre, debe, haber)VALUES ($id+1, '2A7', 'IVA DÉBITO FISCAL', $creditoFiscal, 0);");
         $debitoFiscal = (-1)*(self::obtenerSaldoCuenta("IVA DÉBITO FISCAL"));
         $id = self::obtenerID();
         self::ejecutarQuery("INSERT INTO public.ajustespartidas(id, fecha, concepto) VALUES ($id+1,'09-01-2020', 'Por determinacion de IVA');");
-        self::ejecutarQuery("INSERT INTO public.ajustes(
-	partidas_id, numero, nombre, debe, haber)
-	VALUES ($id+1, '1A9', 'IVA', 0, $debitoFiscal);");
-        self::ejecutarQuery("INSERT INTO public.ajustes(
-        partidas_id, numero, nombre, debe, haber)
-	VALUES ($id+1, '2A7', 'IVA DÉBITO FISCAL', $debitoFiscal, 0);");
+        self::ejecutarQuery("INSERT INTO public.ajustes(partidas_id, numero, nombre, debe, haber) VALUES ($id+1, '1A9', 'IVA', 0, $debitoFiscal);");
+        self::ejecutarQuery("INSERT INTO public.ajustes(partidas_id, numero, nombre, debe, haber) VALUES ($id+1, '2A7', 'IVA DÉBITO FISCAL', $debitoFiscal, 0);");
 
         $inventario = (self::obtenerSaldoCuenta("INVENTARIOS"));
         $ingresoPorServicio = (-1)*(self::obtenerSaldoCuenta("INGRESOS POR SERVICIOS"));
