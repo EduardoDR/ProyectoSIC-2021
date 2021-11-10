@@ -31,7 +31,7 @@
             <td></td>
             <td>Ventas de accesorios y consumibles</td>
             <td></td>
-            <td>${{ ventaDeAccesorios }}</td>
+            <td>${{ (-1)*ventaDeAccesorios }}</td>
             <td></td>
         </tr><tr>
             <td></td>
@@ -44,7 +44,7 @@
             <td>Costo de Venta y servicios</td>
             <td></td>
             <td></td>
-            <td>${{ (-1)*(costoPorServicios- (inventario + comprasAccesorios + comprasSoftware)) }}</td>
+            <td>${{ (costoPorServicios- (inventario + comprasAccesorios + comprasSoftware)) }}</td>
         </tr><tr>
             <td></td>
             <td>Costos por servicios</td>
@@ -60,7 +60,7 @@
         </tr><tr>
             <td>(+)</td>
             <td>Compras de accesorios y consumibles</td>
-            <td>${{ comprasAccesorios }}</td>
+            <td>${{ (-1)*comprasAccesorios }}</td>
             <td></td>
             <td></td>
         </tr><tr>
@@ -73,13 +73,13 @@
             <td>(=)</td>
             <td>Mercadería dispoinible para la venta</td>
             <td></td>
-            <td>{{ (inventario + comprasAccesorios + comprasSoftware) }}</td>
+            <td>{{ (-1)*(inventario + comprasAccesorios + comprasSoftware) }}</td>
             <td></td>
         </tr><tr>
             <td>(=)</td>
             <td>Costo de ventas</td>
             <td></td>
-            <td>{{ (inventario + comprasAccesorios + comprasSoftware) }}</td>
+            <td>{{ (-1)*(inventario + comprasAccesorios + comprasSoftware) }}</td>
             <td></td>
         </tr><tr>
             <td>(=)</td>
